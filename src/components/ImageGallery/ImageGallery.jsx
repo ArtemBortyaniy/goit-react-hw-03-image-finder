@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { pixabayApi } from 'components/services/pixabayApi';
+import { pixabayApi } from 'services/pixabayApi';
 import { toast } from 'react-toastify';
 import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
 import { Button } from 'components/Button/Button';
