@@ -32,8 +32,11 @@ export class App extends Component {
     const previousStateQ = prevState.serchQuery;
     const nextStateQ = this.state.serchQuery;
 
-    if (previousStateQ !== nextStateQ) {
-      this.setState({ status: Status.PENDING, page: 1 });
+    const previousPage = prevState.page;
+    const nextPage = this.state.page;
+
+    if (previousStateQ !== nextStateQ || previousPage !== nextPage) {
+      this.setState({ status: Status.PENDING });
 
       pixabayApi(nextStateQ, page)
         .then(data => {
@@ -49,18 +52,6 @@ export class App extends Component {
             data: data.hits,
             status: Status.RESOLVED,
           });
-        })
-        .catch(error => this.setState({ error, status: Status.REJECTED }));
-    }
-
-    const previousPage = prevState.page;
-    const nextPage = this.state.page;
-
-    if (previousPage !== nextPage) {
-      this.setState({ status: Status.PENDING });
-      pixabayApi(nextStateQ, nextPage)
-        .then(data => {
-          this.setState({ data: data.hits, status: Status.RESOLVED });
         })
         .catch(error => this.setState({ error, status: Status.REJECTED }));
     }
