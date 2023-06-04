@@ -22,12 +22,12 @@ export class ImageGalleryItem extends Component {
             alt={data.tags}
             className="imageGalleryItem-image"
           />
-          {showModal && (
-            <Modal onClose={this.toggleModal}>
-              <img src={data.webformatURL} alt={data.tag} />
-            </Modal>
-          )}
         </li>
+        {showModal && (
+          <Modal onClose={this.toggleModal}>
+            <img src={data.webformatURL} alt={data.tag} />
+          </Modal>
+        )}
       </>
     );
   }
